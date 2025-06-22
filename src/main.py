@@ -125,9 +125,8 @@ def start_scheduler():
         scheduler.start()
         print("스케줄러가 시작되었습니다.")
 
-@app.before_first_request
-def before_first_request():
-    """첫 요청 전에 실행되는 함수입니다."""
+# 앱 생성 후 초기화 함수 추가
+def initialize_app():
     # 알림 시스템 초기화
     init_notification_system(app)
     
@@ -136,6 +135,12 @@ def before_first_request():
     
     # 초기 크롤링
     crawler.crawl_notices()
+
+# 앱 실행 시 초기화 함수 호출
+with app.app_context():
+    initialize_app()
+
+
 
 if __name__ == '__main__':
     # 개발 환경에서 실행 시
