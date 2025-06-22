@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동서대학교 공지사항</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- 파비콘 추가 -->
+    <link rel="icon" href="https://www.dongseo.ac.kr/kr/images/common/favicon.ico" type="image/x-icon">
+    <!-- OneSignal SDK -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <!-- 알림 관련 메타 태그 -->
+    <meta name="theme-color" content="#003876">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>동서대학교 공지사항</h1>
+            <div class="notification-container">
+                <button id="notification-subscribe-btn" class="btn btn-primary">알림 구독하기</button>
+                <p id="notification-status" class="notification-status">알림 구독을 활성화하면 새 공지사항을 바로 확인할 수 있습니다.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="공지사항 검색...">
+            <button id="search-btn" class="btn">검색</button>
+            <button id="refresh-btn" class="btn">새로고침</button>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">전체</button>
+            <button class="filter-btn" data-filter="notice">공지</button>
+            <button class="filter-btn" data-filter="new">새 글</button>
+            <button class="filter-btn" data-filter="attachment">첨부파일</button>
+        </div>
+
+        <div class="notice-container">
+            <table class="notice-table">
+                <thead>
+                    <tr>
+                        <th class="num">번호</th>
+                        <th class="title">제목</th>
+                        <th class="author">작성자</th>
+                        <th class="date">등록일</th>
+                        <th class="views">조회수</th>
+                    </tr>
+                </thead>
+                <tbody id="notice-list">
+                    <!-- 공지사항 목록이 여기에 동적으로 추가됩니다 -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination" id="pagination">
+            <!-- 페이지네이션이 여기에 동적으로 추가됩니다 -->
+        </div>
+
+        <div class="last-updated" id="last-updated">
+            마지막 업데이트: <span id="update-time">{{ last_updated }}</span>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 동서대학교 공지사항 알림 서비스</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/onesignal.js"></script>
+</body>
+</html>
